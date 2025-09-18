@@ -1,7 +1,11 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import { useState } from 'react'
 import React from 'react'
 
 const CartaoPerfil = () => {
+
+    const [detalhesVisiveis, setDetalhesVisiveis] = useState(false)
+
   return (
     <View style={styles.container}>
 
@@ -22,9 +26,19 @@ const CartaoPerfil = () => {
 
     {/* Botao com TouchableOpacity Ver Mais/Ver Menos */}
 
-    <TouchableOpacity style={styles.botao}>
-        <Text style={styles.textoBotao}>Ver Mais</Text>
+    <TouchableOpacity style={styles.botao} onPress={() => setDetalhesVisiveis(!detalhesVisiveis)}>
+        <Text style={styles.textoBotao}>{detalhesVisiveis ? 'Ver Menos' : 'Ver Mais' }</Text>
     </TouchableOpacity>
+
+    {/* Área de detalhes */}
+
+    {detalhesVisiveis && (<View style={styles.detalhes}>
+        <Text style={styles.textoDetalhe}>Localização: João Pessoa</Text>
+        <Text style={styles.textoDetalhe}>Email: john@gmail.com</Text>
+        <Text style={styles.textoDetalhe}>Hobbies: Programar, Viajar, Jogar</Text>
+    </View>)}
+
+    
 
 
 
